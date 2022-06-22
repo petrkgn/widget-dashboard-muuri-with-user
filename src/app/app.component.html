@@ -1,0 +1,12 @@
+
+<fieldset>
+<legend>Use buttons</legend>
+<button (click)="createWidget('news',{country: 'gr'} )">Create widget GR</button>
+<button (click)="createWidget('news')">Create widget Default</button>
+<button (click)="saveToStorage()">Save to Storage</button>
+<button (click)="getFromStorage()">Get from Storage</button>
+<button (click)="setUser('user5')">Set User</button>
+</fieldset>
+
+
+<main hostRef class="grid main"></main>

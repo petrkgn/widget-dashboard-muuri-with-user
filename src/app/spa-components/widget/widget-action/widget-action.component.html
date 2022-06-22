@@ -1,0 +1,30 @@
+<div class="search">
+  <form [formGroup]="queryData" (ngSubmit)="sendQueryData()">
+    <div *ngFor="let control of formModel">
+      <label position="stacked">{{ control.label }}</label>
+      <div [ngSwitch]="control.type">
+        <input
+          *ngSwitchCase="'text'"
+          type="text"
+          [formControlName]="control.name"
+          [value]="control.value"
+        />
+        <select *ngSwitchCase="'select'" [formControlName]="control.name">
+          <option
+            *ngFor="let option of control.options | keyvalue"
+            [value]="option.key"
+          >
+            {{ option.value }}
+          </option>
+        </select>
+        <input
+          *ngSwitchCase="'radio'"
+          type="radio"
+          [formControlName]="control.name"
+          [value]="control.value"
+        />
+      </div>
+    </div>
+    <button type="submit">Применить</button>
+  </form>
+</div>

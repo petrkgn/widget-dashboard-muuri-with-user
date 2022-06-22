@@ -1,0 +1,29 @@
+.view-container {
+  height: 100%;
+}
+
+.article {
+  height: 100%;
+  padding: 4%;
+
+  li {
+    // background-color: aqua;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    .img-art {
+      align-self: center;
+      width: 200px;
+      height: 100px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: left top;
+    }
+
+    a {
+      --flow-space: 5em;
+    }
+  }
+}

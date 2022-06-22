@@ -1,0 +1,19 @@
+<ng-container *subContent="widget.currentContent; hold: placeholder; let news">
+  <div class="view-container">
+    <ul class="article">
+      <li class="flow"  *ngFor="let article of news">
+        <h3>{{ article.title }}</h3>
+        <div
+          class="img-art"
+          style="background-image:url({{ article.imgUrl }}) "
+        ></div>
+
+        <p>{{ article.description }}</p>
+        <a href="{{ article.sourceUrl }}" target="blank"> Источник статьи</a>
+      </li>
+    </ul>
+  </div>
+</ng-container>
+<ng-template #placeholder>
+  <h2>Loading! Please wait...</h2>
+</ng-template>

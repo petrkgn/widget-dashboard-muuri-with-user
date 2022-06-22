@@ -1,0 +1,17 @@
+<div class="item-content">
+  <!-- <div>My new {{ widgetContext }}Widget! Hurra!!</div>
+  <hr />
+  <div>{{ widgetTitle }}</div>
+  <button #but (click)="destroyWidget()">Destroy widget</button>
+  <hr />
+
+  <app-widget-action
+    *ngIf="widgetActionModel"
+    [formModel]="widgetActionModel"
+    (queryRequest)="getContentWitchQueryData($event)"
+  ></app-widget-action>
+
+  <hr />-->
+
+  <ng-container *ngComponentOutlet="widgetTemplate"> </ng-container>
+</div>
