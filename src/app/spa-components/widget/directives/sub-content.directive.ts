@@ -41,7 +41,10 @@ export class SubContentDirective implements OnDestroy, OnChanges, OnInit {
     }
   }
 
-  private initCurrentContent(currentContent$: Observable<any>, subDestroy: Observable<any>) {
+  private initCurrentContent(
+    currentContent$: Observable<any>,
+    subDestroy: Observable<any>
+  ) {
     currentContent$
       .pipe(delay(0), takeUntil(subDestroy))
       .subscribe((content) => {

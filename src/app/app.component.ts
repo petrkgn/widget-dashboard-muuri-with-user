@@ -56,9 +56,9 @@ export class AppComponent implements OnInit {
 
   saveToStorage() {
     this.userState.setItem(
-      'user5',
+      'user2',
       JSON.stringify({
-        widgetList: [{ widget: 'cz', setting: { cuntry: 'cz' } }],
+        widgetList: [{ widget: 'fr', setting: { cuntry: 'fr' } }],
       })
     );
   }
