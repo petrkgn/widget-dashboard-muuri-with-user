@@ -97,7 +97,7 @@ export class WidgetComponent implements OnInit {
     this.widgetActionModel = this.widgetConfig.formActionModel;
   }
 
-  public getContentWitchQueryData(queryData: { [x: string]: string }): void {
+  public getContentWitchQueryData(queryData: {}): void {
     if (JSON.stringify(this.cashedQueryData) !== JSON.stringify(queryData)) {
       this.cashedQueryData = queryData;
       this.getCurrentContent();
