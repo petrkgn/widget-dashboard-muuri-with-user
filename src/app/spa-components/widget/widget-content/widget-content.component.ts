@@ -62,7 +62,6 @@ export class WidgetComponent implements OnInit {
 
   private initWidgetConfig(): void {
     this.widgetConfig = { ...this.config[this.widgetContext] };
-    console.log(this.widgetConfig);
   }
 
   private initWidgetTitle(): void {
