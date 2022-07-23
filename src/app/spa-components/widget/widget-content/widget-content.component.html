@@ -1,8 +1,10 @@
 <div class="item-content">
-  <div>My new {{ widgetContext }}Widget! Hurra!!</div>
+  <div style="text-align:center"><h2>My new {{ widgetContext }}Widget</h2></div>
   <hr />
-  <div>{{ widgetTitle }}</div>
+  <div style="display: flex; justify-content: space-between; margin: 0 1em 0">
+  <div><h3>{{ widgetTitle }}</h3></div>
   <button #but (click)="destroyWidget()">Destroy widget</button>
+  </div>
   <hr />
 
   <app-widget-action

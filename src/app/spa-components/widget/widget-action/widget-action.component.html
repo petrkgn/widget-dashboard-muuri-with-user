@@ -1,6 +1,9 @@
 <div class="search">
   <form [formGroup]="queryData" (ngSubmit)="sendQueryData()">
-    <div *ngFor="let control of formModel">
+    <div
+      [ngClass]="{ radio: control.type === 'radio' }"
+      *ngFor="let control of formModel"
+    >
       <label position="stacked">{{ control.label }}</label>
       <div [ngSwitch]="control.type">
         <input
@@ -17,6 +20,7 @@
             {{ option.value }}
           </option>
         </select>
+
         <input
           *ngSwitchCase="'radio'"
           type="radio"
@@ -25,6 +29,9 @@
         />
       </div>
     </div>
-    <button type="submit">Применить</button>
+    <hr>
+    <div style="text-align: right">
+    <button  type="submit">Применить</button>
+    </div>
   </form>
 </div>
