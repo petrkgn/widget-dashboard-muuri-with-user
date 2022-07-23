@@ -41,12 +41,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     @Inject(CURRENT_USER_DASHBOARD_STATE) readonly currentUser: Observable<any>,
+    @Inject(DYNAMIC_COMPONENT) readonly dynamicComponent: ComponentRef<any>,
     private userState: LocalStorageService,
     private currentUsers: CurrentUserService,
-    @Inject(DYNAMIC_COMPONENT) readonly dynamicComponent: ComponentRef<any>,
-    @Inject(CreateComponentService)
     readonly componentFactory: CreateComponentService,
-    @Inject(MuuriGridService) readonly gridService: MuuriGridService
+    readonly gridService: MuuriGridService
   ) {}
 
   ngOnInit() {
@@ -79,26 +78,23 @@ export class AppComponent implements OnInit {
     );
   }
   // сделать createWidget сервисом
-  public createWidget(context: string, queryData?: {} ): void {
+  public createWidget(context: string, queryData?: {}): void {
     if (this.viewHost) {
       const componentInstance = this.componentFactory.createComponent(
         this.viewHost,
         this.dynamicComponent
       );
-      
-      if (queryData ) {
+
+      if (queryData) {
         //то записать в local user state
         componentInstance.instance.cashedQueryData = queryData;
-       
       }
-      
+
       componentInstance.instance.widgetContext = context;
 
       this.gridService.addItemToGrid(
         componentInstance.instance.hostRef.nativeElement
       );
-
-      
     }
   }
 }

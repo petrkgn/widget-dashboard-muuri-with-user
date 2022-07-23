@@ -14,7 +14,7 @@ export class UserStateService implements OnInit {
 
   private userState = new BehaviorSubject(this.defaultUser);
   userState$ = this.userState.asObservable();
-  // храним локальный stste и измененияв нем при destroy app записываем в основной storage
+  // храним локальный state и измененияв нем при destroy app записываем в основной storage
   private userStateStorage = {};
 
   constructor(
