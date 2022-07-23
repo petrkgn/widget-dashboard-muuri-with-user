@@ -2,9 +2,7 @@ import { Component, ElementRef, Inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { MuuriGridService } from '../../../services/muuri-grid.service';
-import { deepCopyObject } from '../../../utilities/deep-copy-object';
 import { IRequestParameters } from '../interfaces/interfaces';
-// import { swithCaseMap } from '../../../utilities/swithCase';
 import { ContentService } from '../services/content.service';
 import { TEMPLATES_LIST, CONFIG_LIST } from '../tokens/widgets-tokens-list';
 
@@ -46,8 +44,8 @@ export class WidgetComponent implements OnInit {
   constructor(
     @Inject(CONFIG_LIST) private readonly config: WidgetConfig,
     @Inject(TEMPLATES_LIST) private readonly template: { [x: string]: any },
-    @Inject(MuuriGridService) private readonly gridService: MuuriGridService,
-    @Inject(ContentService) private readonly content: ContentService,
+    private readonly gridService: MuuriGridService,
+    private readonly content: ContentService,
     private readonly hostRef: ElementRef
   ) {}
 
