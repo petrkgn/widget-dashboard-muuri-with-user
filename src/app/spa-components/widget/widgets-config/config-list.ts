@@ -23,7 +23,7 @@ export const ConfigList = {
       params: {
         country: 'ru',
         q: '',
-        category: 'politics',
+        category: '',
       },
       options: {
         params:new HttpParams({fromObject: {

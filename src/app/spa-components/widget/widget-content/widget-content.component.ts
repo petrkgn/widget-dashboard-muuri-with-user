@@ -9,16 +9,17 @@ import { ContentService } from '../services/content.service';
 import { TEMPLATES_LIST, CONFIG_LIST } from '../tokens/widgets-tokens-list';
 
 export interface WidgetConfig {
-   [key: string]: {
+  [key: string]: {
     title: string;
     staticContent: false;
     requestConfig: IRequestParameters;
-    responseConfig: <T extends string>(arg0: T) => T extends infer R ? R: never;
+    responseConfig: <T extends string>(
+      arg0: T
+    ) => T extends infer R ? R : never;
     contentAdapter: any;
     formActionModel: any;
   };
 }
-
 
 @Component({
   selector: 'app-widget',
@@ -30,7 +31,7 @@ export interface WidgetConfig {
 export class WidgetComponent implements OnInit {
   public widgetContext: string = '';
 
-  private widgetConfig = {} as WidgetConfig[keyof WidgetConfig]
+  private widgetConfig = {} as WidgetConfig[keyof WidgetConfig];
 
   public widgetActionModel = {};
 
@@ -62,8 +63,8 @@ export class WidgetComponent implements OnInit {
   }
 
   private initWidgetConfig(): void {
-    this.widgetConfig = {...this.config[this.widgetContext]};
-    console.log(this.widgetConfig)
+    this.widgetConfig = { ...this.config[this.widgetContext] };
+    console.log(this.widgetConfig);
   }
 
   private initWidgetTitle(): void {
@@ -73,9 +74,7 @@ export class WidgetComponent implements OnInit {
   private initRequestParametrs(): void {
     const requestConfig = this.widgetConfig.requestConfig;
     this.content.setRequestParameters(requestConfig);
-    if (!this.cashedQueryData) {
-      this.cashedQueryData = requestConfig.params;
-    }
+    !this.cashedQueryData && (this.cashedQueryData = requestConfig.params);
   }
 
   private initResponseAdapter(): void {
