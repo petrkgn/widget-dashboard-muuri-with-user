@@ -7,7 +7,7 @@ import { WidgetActionComponent } from '../widget-action/widget-action.component'
 import { NewsTemplateComponent } from '../widget-templates/news-template/news-template.component';
 import { NewsInterceptor } from '../interceptors/news-api.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SubContentDirective } from '../directives/sub-content.directive';
+import { AsyncDataDirective } from '../directives/async-data.directive';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
@@ -16,7 +16,7 @@ import { SubContentDirective } from '../directives/sub-content.directive';
     WidgetComponent,
     WidgetActionComponent,
     NewsTemplateComponent,
-    SubContentDirective,
+    AsyncDataDirective,
   ],
   entryComponents: [NewsTemplateComponent],
   providers: [
