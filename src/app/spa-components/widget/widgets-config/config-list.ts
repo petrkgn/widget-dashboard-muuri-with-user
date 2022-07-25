@@ -29,7 +29,7 @@ export const ConfigList = {
         params:new HttpParams({fromObject: {
           country: 'ru',
           q: '',
-          category: 'politics',
+          category: '',
         }}),
         body: {},
         headers: new HttpHeaders(),
