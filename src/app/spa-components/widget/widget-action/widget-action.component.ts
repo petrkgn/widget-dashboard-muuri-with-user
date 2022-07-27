@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-widget-action',
+  selector: 'app-widget-action[formModel]',
   templateUrl: './widget-action.component.html',
   styleUrls: ['./widget-action.component.scss'],
 })
