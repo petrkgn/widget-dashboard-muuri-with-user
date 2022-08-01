@@ -1,6 +1,6 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
+
   Component,
   ElementRef,
   Inject,
@@ -45,7 +45,7 @@ export class WidgetComponent implements OnInit {
 
   public widgetTitle: string = '';
 
-  public currentContent: Observable<any> = of({});
+  public currentContent$: Observable<any> = of({});
 
   public widgetTemplate: any;
 
@@ -55,7 +55,7 @@ export class WidgetComponent implements OnInit {
     private readonly gridService: MuuriGridService,
     private readonly content: ContentService,
     private readonly hostRef: ElementRef,
-    private readonly cdr: ChangeDetectorRef
+    
   ) {}
 
   ngOnInit() {
@@ -106,19 +106,17 @@ export class WidgetComponent implements OnInit {
     if (JSON.stringify(this.cashedQueryData) !== JSON.stringify(queryData)) {
       this.cashedQueryData = queryData;
       this.getCurrentContent();
-      // this.cdr.markForCheck()
     }
   }
 
   private getCurrentContent(): void {
     if (this.widgetConfig.staticContent) {
-      this.currentContent = this.widgetConfig.staticContent;
+      this.currentContent$ = this.widgetConfig.staticContent;
     } else {
       if (this.cashedQueryData) {
         this.content.setSearchParameters(this.cashedQueryData);
 
-        this.currentContent = this.content.getContentFromApi();
-       
+        this.currentContent$ = this.content.getContentFromApi();
       }
     }
   }

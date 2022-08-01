@@ -21,7 +21,7 @@ import { catchError, delay, takeUntil, tap } from "rxjs/operators";
 @Directive({
   selector: "[asyncData]",
 })
-export class AsyncDataDirective implements OnInit, OnDestroy, OnChanges {
+export class AsyncDataDirective implements OnInit, OnDestroy {
   constructor(
     @Inject(ViewContainerRef)
     private readonly viewContainerRef: ViewContainerRef,
@@ -43,10 +43,7 @@ export class AsyncDataDirective implements OnInit, OnDestroy, OnChanges {
 
   private readonly subDestroy$ = new Subject();
   
-  ngOnChanges() {
-    console.log('changed 2')
-    // this.initCurrentData(this.isData$, this.subDestroy$);
-  }
+
   ngOnInit() {
     if (!this.isData$ && this.placeholder) {
       this.viewContainerRef.createEmbeddedView(this.placeholder);
