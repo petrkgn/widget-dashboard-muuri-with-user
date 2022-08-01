@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   Inject,
@@ -53,7 +54,8 @@ export class WidgetComponent implements OnInit {
     @Inject(TEMPLATES_LIST) private readonly template: { [x: string]: any },
     private readonly gridService: MuuriGridService,
     private readonly content: ContentService,
-    private readonly hostRef: ElementRef
+    private readonly hostRef: ElementRef,
+    private readonly cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -104,6 +106,7 @@ export class WidgetComponent implements OnInit {
     if (JSON.stringify(this.cashedQueryData) !== JSON.stringify(queryData)) {
       this.cashedQueryData = queryData;
       this.getCurrentContent();
+      // this.cdr.markForCheck()
     }
   }
 
@@ -115,6 +118,7 @@ export class WidgetComponent implements OnInit {
         this.content.setSearchParameters(this.cashedQueryData);
 
         this.currentContent = this.content.getContentFromApi();
+       
       }
     }
   }

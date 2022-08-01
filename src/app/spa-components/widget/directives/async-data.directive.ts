@@ -30,7 +30,10 @@ export class AsyncDataDirective implements OnInit, OnDestroy, OnChanges {
   ) {}
 
   @Input("asyncData")
-  private  isData$!: Observable<any>
+  private set isData$ (currentContent$: Observable<any>) {
+    console.log('changed 1')
+    this.initCurrentData(currentContent$, this.subDestroy$);
+  }
 
   @Input("asyncDataPlaceholder")
   private readonly placeholder?: TemplateRef<any>;
@@ -41,8 +44,8 @@ export class AsyncDataDirective implements OnInit, OnDestroy, OnChanges {
   private readonly subDestroy$ = new Subject();
   
   ngOnChanges() {
-    console.log('changed')
-    this.initCurrentData(this.isData$, this.subDestroy$);
+    console.log('changed 2')
+    // this.initCurrentData(this.isData$, this.subDestroy$);
   }
   ngOnInit() {
     if (!this.isData$ && this.placeholder) {

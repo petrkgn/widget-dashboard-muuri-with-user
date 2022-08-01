@@ -1,5 +1,6 @@
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { WidgetComponent } from '../../widget-content/widget-content.component';
 
 @Component({
@@ -9,5 +10,8 @@ import { WidgetComponent } from '../../widget-content/widget-content.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsTemplateComponent {
-  constructor(public widget: WidgetComponent) {}
+  currentContent$: Observable<any>
+  constructor(public widget: WidgetComponent) {
+    this.currentContent$ = widget.currentContent
+  }
 }
