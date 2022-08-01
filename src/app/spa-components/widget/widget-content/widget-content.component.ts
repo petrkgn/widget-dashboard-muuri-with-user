@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { MuuriGridService } from '../../../services/muuri-grid.service';
@@ -23,7 +29,7 @@ export interface WidgetConfig {
   selector: 'app-widget',
   templateUrl: './widget-content.component.html',
   styleUrls: ['./widget-content.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'widget' },
   providers: [ContentService],
 })

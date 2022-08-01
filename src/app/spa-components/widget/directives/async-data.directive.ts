@@ -3,6 +3,7 @@ import {
   Directive,
   Inject,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   TemplateRef,
@@ -20,7 +21,7 @@ import { catchError, delay, takeUntil, tap } from "rxjs/operators";
 @Directive({
   selector: "[asyncData]",
 })
-export class AsyncDataDirective implements OnInit, OnDestroy {
+export class AsyncDataDirective implements OnInit, OnDestroy, OnChanges {
   constructor(
     @Inject(ViewContainerRef)
     private readonly viewContainerRef: ViewContainerRef,
@@ -29,9 +30,7 @@ export class AsyncDataDirective implements OnInit, OnDestroy {
   ) {}
 
   @Input("asyncData")
-  private set isData(currentData$: Observable<any>) {
-    this.initCurrentData(currentData$, this.subDestroy$);
-  }
+  private  isData!: Observable<any>
 
   @Input("asyncDataPlaceholder")
   private readonly placeholder?: TemplateRef<any>;
@@ -41,7 +40,9 @@ export class AsyncDataDirective implements OnInit, OnDestroy {
 
   private readonly subDestroy$ = new Subject();
   
-
+ngOnChanges() {
+  this.initCurrentData(this.isData, this.subDestroy$);
+}
   ngOnInit() {
     if (!this.isData && this.placeholder) {
       this.viewContainerRef.createEmbeddedView(this.placeholder);
@@ -65,6 +66,7 @@ export class AsyncDataDirective implements OnInit, OnDestroy {
         }),
         distinctUntilChanged(),
         tap(() => this.cdr.markForCheck()),
+        tap(() => console.log('call')),
         takeUntil(subDestroy$)
       )
       .subscribe((data) => {
