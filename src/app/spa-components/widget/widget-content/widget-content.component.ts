@@ -23,7 +23,7 @@ export interface WidgetConfig {
   selector: 'app-widget',
   templateUrl: './widget-content.component.html',
   styleUrls: ['./widget-content.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'widget' },
   providers: [ContentService],
 })

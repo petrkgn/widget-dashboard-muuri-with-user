@@ -54,7 +54,7 @@ export class AsyncDataDirective implements OnInit, OnDestroy {
   ) {
     currentData$
       .pipe(
-        delay(2000),
+        delay(0),
         catchError((err) => {
           console.log("caught error and rethrowing farther", err);
           return throwError(() => new Error(err));
