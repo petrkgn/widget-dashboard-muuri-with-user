@@ -1,4 +1,4 @@
-import { chainedInstruction } from '@angular/compiler/src/render3/view/util';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WidgetComponent } from '../../widget-content/widget-content.component';
 
