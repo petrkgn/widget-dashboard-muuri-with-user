@@ -40,6 +40,7 @@ export class AsyncDataDirective implements OnInit, OnDestroy {
   private readonly fallBack?: string = "Error. Try later";
 
   private readonly subDestroy$ = new Subject();
+  
 
   ngOnInit() {
     if (!this.isData && this.placeholder) {
